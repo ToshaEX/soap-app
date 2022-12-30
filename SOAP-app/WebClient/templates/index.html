@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency App</title>
+    <link
+      href="{{ url_for('static', filename='index.css') }}"
+      rel="stylesheet"
+      media="screen"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <div class="sub-container">
+        <form id="form" class="converter-form" method="post">
+          <h1 class="title">Currency Converter</h1>
+
+          <div class="box">
+            <div class="source-currency">
+              <input
+                type="text"
+                placeholder="source currency"
+                id="source"
+                required
+              />
+
+              <select id="select_One">
+                <option value="Choose a Currency">Choose a Currency</option>
+                {% for item in key_values %}
+                <option value="{{item}}">{{item}}</option>
+                {% endfor %}
+              </select>
+            </div>
+
+            <div class="target-currency">
+              <input
+                type="text"
+                placeholder="target currency"
+                id="target"
+                disabled
+              />
+
+              <select id="select_Two">
+                <option value="Choose a Currency">Choose a Currency</option>
+                {% for item in key_values %}
+                <option value="{{item}}">{{item}}</option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" class="convert-btn">Convert</button>
+
+          <div id="loading" class="lds-dual-ring"></div>
+        </form>
+      </div>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.js"
+      integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      type="text/javascript"
+      src="{{ url_for('static', filename='index.js') }}"
+    ></script>
+  </body>
+</html>
